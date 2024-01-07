@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    
+  }
+.header {
+    background-image: url("./image/bg.png");
+    background-repeat: no-repeat;
+    width: auto;
+    height: 800px;
+    margin-top: 0px;
+    padding: 0;
+    padding-top: 15px;
+    padding-right: 35px;
+    top:0;
+  
+}
+
+.topnav {
+    overflow: hidden;
+    /* ทำให้เนื้อหาที่เกินขอบเขตของ element นั้นๆ ถูกซ่อนไว้และไม่แสดงผลออกมาที่ส่วนที่กำหนดไว้  */
+    background-color: #333;
+    border-radius: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    padding: 10px;
+    /* เพิ่มเงา */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+    /* เพิ่ม transition ให้กับ transform property */
+    transition: transform 0.3s ease-in-out; 
+    width: 100%;
+    box-sizing: border-box; 
+  }
+
+.topnav-right{
+    float: right;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  
+.topnav a.active {
+    color: white;
+  }
+  
+.topnav .icon {
+    display: none;
+  }
+  
+.topnav.sticky {
+    position: fixed;
+    z-index: 999;
+
+    transform: translateY(10%);
+    /* ในที่นี้, calc(100% - 30px) จะทำให้ความกว้างของ .topnav 
+    เท่ากับ 100% ของหน้าจอลบด้วย 35px ทางด้านขวา. 
+    คำนวณนี้จะทำให้ความกว้างของ .topnav 
+    ปรับตามขนาดหน้าจอและเว้นระยะข้างขวาไว้เสมอ. */
+    width: calc(100% - 35px);
+    /* width: calc(100% - 35px); */
+    box-sizing: border-box; /* เพิ่ม line นี้ */ 
+}
+
+.logo:hover {
+    background-color: transparent !important; 
+    /* ไม่มีการเปลี่ยนแปลงในพื้นหลัง */
+    color: rgb(255, 255, 255) !important; 
+    /* สีข้อความเปลี่ยนเป็นดำ */
+    
+}
+
+/* เมื่อคลิกที่ปุ่มเมนู, คลาส .icon จะเกี่ยวข้อง, 
+ทำให้ไม่ถูกส่งค่า background-color และ color */
+.topnav .icon:hover,
+.topnav a:not(.logo):hover {
+    background-color: #ddd;
+    color: rgb(9, 7, 7);
+    border-radius: 40px;
+}
+
+
+
+.headtext{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.text{
+  flex-grow: 3;
+  padding: 50px;
+  padding-left: 100px;
+  text-align: left;
+}
+.p-button{
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: 0px;
+    background-color: black;
+    color: white;   
+    border-radius: 25px; 
+    font-size: 20;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    cursor: pointer;
+}
+.p-button:hover{
+    background-color: #ddd;
+    color: rgb(9, 7, 7);
+}
+.bg-img{
+    background-image: url("../img/bg.png");
+    width: 100vw;
+    height: 70vh;
+    margin: 0;
+    padding: 0;  
+}
+.head-img {
+    flex-grow: 7;
+    width: 50%;
+    height: 50%;
+    padding-right: 100px;
+    animation: bounceUpDown 2s infinite alternate; /* 2s คือระยะเวลาทั้งหมด, infinite คือว่าจะทำซ้ำไปเรื่อยๆ, alternate คือการสลับทิศทาง */
+}
+@keyframes bounceUpDown {
+    0%, 100% {
+        transform: translateY(0); /* เริ่มต้นและจบที่ตำแหน่งเดิม */
+    }
+
+    50% {
+        transform: translateY(-20px); /* กลางครึ่งขยับขึ้น */
+    }
+}
+
+
+
+.cart-content {
+   
+  position: fixed; /* ตั้งตำแหน่งโดยคงที่ */
+  top: 0;
+  right: 0;
+  height: 100%; /* ให้มีความสูงเท่ากับหน้าจอ */
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.9); 
+  border: 0px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out; /* เพิ่ม transition ให้กับ transform property */
+  z-index: 1000;
+  
+  
+}
+
+.show-cart {
+  display: block;   
+  transform: translateX(0);
+}
+
+
+
+
+
+
+/* สไตล์ปุ่มปิด */
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.cart-head{
+  background-color: black;
+  color: white;
+  padding: 10px;
+  padding-left: 25px;
+  margin: -10px;
+}
+
+
+/* เนื้อหา */
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* จัดให้รูปและปุ่มอยู่ในส่วนซ้ายและขวาของ .flex-container */
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    height: 50vh;
+    margin: 0 auto; /* จัดตรงกลางทั้งแนวนอนและแนวตั้ง */
+}
+
+.product {
+    text-align: center;
+}
+
+
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  [class*="col-"] {
+    float: left;
+  }
+  
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  
+
+
+
+.footer{
+    height: 200px;
+} 
+
+@media screen and (max-width: 600px) {   
+  .headtext{  
+      flex-direction: column;
+  }
+  
+  .text{
+      order: 2;
+      flex-grow: 3;
+      padding: 50px;
+      padding-left: 100px;
+      text-align: left;
+  }
+  .head-img {
+      order: 1;
+      padding-left: 150px;
+      padding-top: 50px;
+      flex-grow: 7;
+      width: 50%;
+      height: 50%;
+      padding-right: 100px;
+      animation: bounceUpDown 2s infinite alternate; /* 2s คือระยะเวลาทั้งหมด, infinite คือว่าจะทำซ้ำไปเรื่อยๆ, alternate คือการสลับทิศทาง */
+  }
+}    
+
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+      
+    }
+    .topnav .topnav-right{
+      display: none;  
+    }
+}
+    
+  
+  
+@media screen and (max-width: 600px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: center;
+    }
+    .topnav.responsive .topnav-right{
+        display: block;
+        float: none;
+        
+    }
+
+
+
+
+
+    .fakeimg {
+        margin-top: 5px;
+        background-color: #aaa;
+        padding: 20px;
+        margin-bottom: 30px;
+        height: 50vh; /* ให้ความสูงเป็น 50% ของ viewport height */
+        width: 70vw; /* ให้ความกว้างเป็น 50% ของ viewport width */
+        max-width: 100%; /* ป้องกัน element ไม่ใหญ่เกินไปเมื่อ viewport มีขนาดเล็ก */
+        max-height: 100%; /* ป้องกัน element ไม่สูงเกินไปเมื่อ viewport มีขนาดเล็ก */
+    }
+    .flex-container-2{
+      height: 30vh; /* ความสูงเป็น 50% ของ viewport height */
+      display: flex;
+    }
+    .content-img-1 .fakeimg{
+        
+        left:5vw; 
+        width: 40vw; 
+        height: 30vw;
+       
+    }
+    .content-img-2 .fakeimg{
+        width: 20vw; 
+        height: 20vw;
+    }  
+  }
+
+
+@media screen and (max-width: 1000px) {
+
+    .flex-container-2{
+      height: 30vh; /* ความสูงเป็น 50% ของ viewport height */
+      display: flex;
+    }
+    .content-img-1 .fakeimg{
+        
+        left:5vw; 
+        width: 40vw; 
+        height: 30vw;
+       
+    }
+    .content-img-2 .fakeimg{
+        width: 20vw; 
+        height: 20vw;
+    }  
+  }
+  
+/* .item1 { grid-area: bg; }
+.item2 { grid-area: pic; }
+.item3 { grid-area: bgw; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'bg bg bg bg bgw bgw bgw bgw bgw'
+    'bg pic pic bg pic pic bgw bgw bgw'
+    'bg pic pic bg pic pic bgw bgw bgw'
+    'bg bg bg bg bgw bgw bgw bgw bgw';
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+  
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+} */
+
+.item1 { grid-area: green; }
+.item2 { grid-area: white; }
+
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'green green green white white white '
+    'green green green white white white'
+    'green green green white white white ';
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 0px;
+  height: 60vw;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+.item2 .fakeimg{
+  position:absolute; 
+  right: 12vw; 
+}
+
+@media screen and (max-width: 1000px) {
+  .item1 .fakeimg{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40vw; 
+    height: 30vw;
+  }
+  .item2 .fakeimg{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 20vw; 
+    height: 20vw;
+    right: 5vw;
+  }
+  .grid-container{
+    height: 60vh;
+  }
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 2</title>
+    <script src="https://kit.fontawesome.com/6e646720c0.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="topnav" id="myTopnav">
+            <a href="#home" class="logo">
+            <b><i class="fa-brands fa-apple fa-xl"></i></b></a>
+            <div class="topnav-right">
+              <a href="#contact">Home</a>
+              <a href="#contact">Product</a>
+              <a href="#about">Contact us</a>
+              <a href="#news">Register / Log in</a>
+
+              <a href="javascript:void(0);" id="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-shopping-cart"></i> Cart 
+                <span id="cart-count">0</span>
+            </a>
+            
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa-solid fa-bars"></i>
+                </a>
+        </div>
+       
+  
+      <div id="cart-content" class="cart-content">
+      <div class="cart-head"> <h2>Cart</h2> 
+      <button class="close-button" onclick="closeCart()">X</button>
+      </div>
+      <br>
+      <!-- รายการสินค้าจะปรากฏ -->
+      <div id="cart-items"></div>
+      <button class="p-button" onclick="placeOrder()">Checkout</button>
+      </div>
+        <div class="head-content">
+        <div class="headtext">
+          <div class="text">
+            <h1>Welcome to my Webshop</h1>
+            <p style="text-align: left;">Discover a world of possibilities with our online notebook store! Elevate your productivity and style with the latest and greatest laptops at your fingertips. shop with us!</p>
+            <button class="p-button">Register / Log in</button>
+  
+          </div>
+          
+          <img class="head-img" src="./image/notebook.png">
+        </div>
+      </div>
+    </div>
+    
+    <div class="flex-container">
+        <div class="content">
+          <div class="product">
+            <img src="./image/notebook.png" width="150px"> 
+            <p><h5>Product 1</h5></p>
+            <a href="javascript:void(0);"
+            onclick="addToCard('Product 1')">
+            <button class="p-button">Add to Cart</button>
+
+          </a>
+  
+          </div>
+            <div class="content">
+              <div class="product">
+                <img src="./image/notebook.png" width="150px"> 
+                <p><h5>Product 1</h5></p>
+                <a href="javascript:void(0);"
+                onclick="addToCard('Product 2')">
+                <button class="p-button">Add to Cart</button>
+    
+              </a>
+    
+              </div>
+            </div>
+           </div>
+    </div>
+    <script>
+        // สำหรับเปิดเมนูในอุปกรณ์อื่น ๆ 
+        function myFunction() {
+            // รับค่า
+          var x = document.getElementById("myTopnav");
+    
+
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+
+        }
+</script>
+<!--menu sticky-->
+<script>
+    var topnav = document.getElementById("myTopnav");
+    var topnavOffset = topnav.offsetTop;
+  
+     window.onscroll = function() {
+         if (window.pageYOffset > topnavOffset) {
+       topnav.classList.add("sticky", "show");
+         } else {
+             topnav.classList.remove("sticky", "show");
+         }
+     }
+
+</script>
+<script>
+  var cartItems = [];
+  function addToCard(item) {
+    cartItems.push(item);
+   updateCartCount();
+   updateCartContent();
+
+  }
+  function updateCartContent(){
+    var cartItemsContainer = document.getElementById("cart-items");
+    cartItemsContainer.innerHTML = "";
+    
+    cartItems.forEach(
+      function(item) {
+        var cartItem = document.createElement("div");
+        cartItem.innerHTML = item;
+        cartItemsContainer.appendChild(cartItem);
+
+    });
+    var cartContent = document.getElementById("cart-content");
+    cartContent.classList.add("show-cart");
+
+
+  }
+  function updateCartCount(){
+    var cartCount = document.getElementById("cart-count");
+    cartCount.innerHTML = cartItems.length;
+  }
+  function toggleCart() {
+        var cartContent = document.getElementById("cart-content");
+        //แสดงหรือซ่อนเนื้อหาตระกร้า
+        cartContent.classList.toggle("show-cart");
+    }
+    function closeCart() {
+      var cartContent = document.getElementById("cart-content");
+      cartContent.classList.remove("show-cart");
+  
+    }
+
+</script>
+</body>
+
+</html>
+
+
